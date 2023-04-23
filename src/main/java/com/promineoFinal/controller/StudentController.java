@@ -3,20 +3,12 @@ package com.promineoFinal.controller;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.promineoFinal.model.Student;
 import com.promineoFinal.service.StudentService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.Api;
-
 
 @RestController
 @RequestMapping("/musical_groups/students")
@@ -46,7 +38,8 @@ public class StudentController {
     @PostMapping
     @ApiOperation(value = "Create a student", notes = "Create a new student")
     public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
-        return new ResponseEntity<Student>(studentService.saveStudent(student), HttpStatus.CREATED);
+        return new ResponseEntity<Student>(studentService.saveStudentByName(student.getName(), student.getEmail(),
+                student.getInstrument().getName(), student.getGroupId()), HttpStatus.CREATED);
     }
 
     @PutMapping("{student_id}")
@@ -64,5 +57,11 @@ public class StudentController {
         studentService.deleteStudent(studentId);
         return new ResponseEntity<String>("Student Gone!!!", HttpStatus.OK);
     }
-}
 
+    @GetMapping("/search")
+    @ApiOperation(value = "Search students", notes = "Search students by name")
+    public List<Student> searchStudents(
+            @RequestParam("name") @ApiParam(value = "Student name", example = "John") String name) {
+        return studentService.searchStudentsByName(name);
+    }
+}
