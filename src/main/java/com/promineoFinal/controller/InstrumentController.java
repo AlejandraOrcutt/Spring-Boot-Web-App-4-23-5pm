@@ -7,11 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.promineoFinal.model.Instrument;
+import com.promineoFinal.model.Student;
 import com.promineoFinal.service.InstrumentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -48,6 +50,16 @@ public class InstrumentController {
         return new ResponseEntity<>(instrument, HttpStatus.OK);
     }
 
+    
+    @PostMapping("/instrument")
+    @ApiOperation(value = "Create an instrument", notes = "Create a new instrument")
+    public ResponseEntity<Instrument> saveInstrument(@RequestBody Instrument instrument) {
+        // Save the instrument object and retrieve the saved instrument with the generated instrumentId
+        Instrument savedInstrument = instrumentService.saveInstrument(instrument);
+        // Return the saved instrument object in the response with HttpStatus.CREATED status
+        return new ResponseEntity<>(savedInstrument, HttpStatus.CREATED);
+    }
+  
     @PutMapping("/{instrument_id}")
     @ApiOperation(value = "Update instrument by ID", notes = "Update instrument details by ID")
     public ResponseEntity<Instrument> updateInstrumentById(

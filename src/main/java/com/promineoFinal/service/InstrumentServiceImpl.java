@@ -65,5 +65,11 @@ public class InstrumentServiceImpl implements InstrumentService {
       throw new ResourceNotFoundException("Instrument", "Id", instrumentId);
     }
   }
+
+  @Override
+  public Instrument saveInstrument(Instrument instrument) {
+    // Save the instrument using the instrumentRepository
+    return instrumentRepository.save(instrument); 
+  }
   
 }

@@ -12,8 +12,9 @@ public interface StudentService {
     Student getStudentByID(Long id);
 
     // Save a student by name
-    Student saveStudentByName(String name, String email, String instrumentName, int groupId);
+    //Student saveStudentByName(String name, String email, String instrumentName, int groupId);
 
+    Student saveStudentByName(Student student);
     // Update a student
     Student updateStudent(Student student, long studentId);
 

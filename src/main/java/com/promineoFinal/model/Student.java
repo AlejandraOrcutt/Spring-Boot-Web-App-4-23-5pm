@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Data
@@ -31,10 +32,10 @@ public class Student {
 
  
   //joining instrument
-  
+  @JsonIgnore   ///delete later remember
   @ManyToOne
   private Instrument instrument;
-
+  @JsonIgnore   ///delete later remember
   @Column(name = "group_id")
   private int groupId;
 

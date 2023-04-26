@@ -34,13 +34,21 @@ public class StudentController {
             @PathVariable("student_id") @ApiParam(value = "Student ID", example = "1") Long studentId) {
         return new ResponseEntity<Student>(studentService.getStudentByID(studentId), HttpStatus.OK);
     }
-
+    
+    
+    
     @PostMapping
     @ApiOperation(value = "Create a student", notes = "Create a new student")
     public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
-        return new ResponseEntity<Student>(studentService.saveStudentByName(student.getName(), student.getEmail(),
-                student.getInstrument().getName(), student.getGroupId()), HttpStatus.CREATED);
+        return new ResponseEntity<>(studentService.saveStudentByName(student), HttpStatus.CREATED);
     }
+    
+//    @PostMapping
+//    @ApiOperation(value = "Create a student", notes = "Create a new student")
+//    public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
+//        return new ResponseEntity<Student>(studentService.saveStudentByName(student.getName(), student.getEmail(),
+//                student.getInstrument().getName(), student.getGroupId()), HttpStatus.CREATED);
+//    }
 
     @PutMapping("{student_id}")
     @ApiOperation(value = "Update student", notes = "Update student details by ID")

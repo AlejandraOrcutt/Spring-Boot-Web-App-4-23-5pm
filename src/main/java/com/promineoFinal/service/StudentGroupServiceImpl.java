@@ -28,8 +28,6 @@ public class StudentGroupServiceImpl implements StudentGroupService {
         StudentGroup existingStudentGroup = studentGroupRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("StudentGroup not found with id: " + id));
         existingStudentGroup.setGroupId(studentGroup.getGroupId());
-        // Update other properties of StudentGroup object based on your business logic
-        // ...
         return studentGroupRepository.save(existingStudentGroup);
     }
 
@@ -38,8 +36,6 @@ public class StudentGroupServiceImpl implements StudentGroupService {
         StudentGroup studentGroup = new StudentGroup();
         studentGroup.setStudentId(studentId);
         studentGroup.setGroupId(groupId);
-        // Set other properties of StudentGroup object based on your business logic
-        // ...
         return studentGroupRepository.save(studentGroup);
     }
 

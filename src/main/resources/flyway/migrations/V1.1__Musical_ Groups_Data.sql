@@ -1,8 +1,9 @@
--- Insert sample data into instruments table
+-- Insert data into instruments table
 INSERT INTO instruments (name) VALUES ('viola'), ('violin'), ('cello');
 
--- Insert sample data into musical_groups table
+-- Insert data into musical_groups table
 INSERT INTO musical_groups (name) VALUES ('The Beatles'), ('Led Zeppelin'), ('Pink Floyd');
+INSERT INTO musical_groups (name) VALUES ('The Skankin Six'), ('Ska Stars'), ('The Rude Boys');
 
 -- Insert sample data into students table
 INSERT INTO students (name, email, grade, instrument_id, group_id) VALUES 
@@ -16,3 +17,15 @@ INSERT INTO students (name, email, grade, instrument_id, group_id) VALUES
 ('David Gilmour', 'david.gilmour@example.com', 'intermediate', 2, 2),
 ('Syd Barrett', 'syd.barrett@example.com', 'beginner', 3, 3),
 ('Nick Mason', 'nick.mason@example.com', 'beginner', 1, 3);
+('Skankin' Steve', 'skankinsteve@example.com', 'intermediate', 1, 1),
+('Trombone Tony', 'trombonetony@example.com', 'beginner', 2, 2),
+('Saxy Sarah', 'saxysarah@example.com', 'advanced', 3, 3);
+
+
+-- Inserting data for student_instruments
+INSERT INTO student_instruments (student_id, instrument_id)
+VALUES (1, 1), (2, 2), (3, 3);
+
+-- Inserting data for student_groups
+INSERT INTO student_groups (student_id, group_id)
+VALUES (1, 1), (2, 2), (3, 3);

@@ -32,20 +32,40 @@ public class StudentServiceImpl implements StudentService {
     }
 
     // Save a student by name
-    @Override
-    public Student saveStudentByName(String name, String email, String instrumentName, int groupId) {
+//    @Override
+//    public Student saveStudentByName(Student student) {
+    //public Student saveStudentByName(String name, String email, String instrumentName, int groupId) {
         // Retrieve the instrument by name
-        Instrument instrument = instrumentRepository.findByName(instrumentName);
+//        Instrument instrument = instrumentRepository.findByName(instrumentName);
+//
+//        // Create a new student with the provided details
+//        Student student = new Student();
+//        student.setName(name);
+//        student.setEmail(email);
+//        student.setInstrument(instrument);
+//        student.setGroupId(groupId);
 
-        // Create a new student with the provided details
-        Student student = new Student();
-        student.setName(name);
-        student.setEmail(email);
+//      // kyle's suggestion for saveStudentByName
+    
+//      @Override
+//      public Student saveStudentByName(Student student) {
+//        return studentRepository.save(student);
+//    }
+    
+    
+    
+    @Override
+    public Student saveStudentByName(Student student) {
+        // Retrieve the instrument by name
+        Instrument instrument = instrumentRepository.findByName(student.getInstrument().getName());
+
+        // Set the retrieved instrument and group ID to the student object
         student.setInstrument(instrument);
-        student.setGroupId(groupId);
+        student.setGroupId(student.getGroupId());
 
         return studentRepository.save(student);
     }
+
 
     // Update a student
     @Override

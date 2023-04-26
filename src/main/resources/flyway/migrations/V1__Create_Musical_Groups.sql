@@ -1,13 +1,14 @@
+-- DROP DATABASE IF EXISTS musical_groups;
 
--DROP TABLE IF EXISTS student_instruments;
+DROP TABLE IF EXISTS student_instruments;
 DROP TABLE IF EXISTS student_groups;
 DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS instruments;
 DROP TABLE IF EXISTS musical_groups;
 
 -- Create musical_groups database
-CREATE DATABASE IF NOT EXISTS musical_groups;
-
+-- CREATE DATABASE musical_groups;
+USE musical_groups;
 -- Create instruments table
 CREATE TABLE instruments (
   instrument_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -51,3 +52,4 @@ CREATE TABLE student_groups (
 );
 
 --open Web App in swagger http://localhost:8080/swagger-ui.html
+

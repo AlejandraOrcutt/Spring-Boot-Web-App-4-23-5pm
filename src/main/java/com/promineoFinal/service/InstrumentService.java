@@ -13,4 +13,6 @@ public interface InstrumentService {
 
     Instrument getInstrumentById(Long instrumentId);
 
+    Instrument saveInstrument(Instrument instrument);
+
 }
